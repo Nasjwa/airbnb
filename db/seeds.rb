@@ -7,3 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
+
+Flat.destroy_all
+
+20.times do
+  Flat.create!(
+    location: Faker::Address.city,
+    description: Faker::Lorem.paragraph(sentence_count: 3),
+    photo: Faker::LoremFlickr.image(size: "600x400", search_terms: ['apartment', 'flat'])
+  )
+end
+
+puts "Done! Created #{Flat.count} fake flats."
