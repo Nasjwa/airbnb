@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require 'faker'
+require 'open-uri'
 
 puts "🧹 Clearing existing data..."
 Flat.destroy_all
@@ -20,6 +21,7 @@ puts "🏠 Seeding fake flats..."
 30.times do
   Flat.create!(
     location: Faker::Address.city,
+    title: Faker::Lorem.sentence(word_count: 3),
     description: Faker::Lorem.paragraph(sentence_count: 3),
     photo: Faker::LoremFlickr.image(size: "600x400", search_terms: ['apartment', 'flat']),
     user: user
