@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>My Bookings</h1>
+
+  <% if @bookings.any? %>
+    <% @bookings.each do |booking| %>
+      <div class="card" style="padding: 12px; margin-bottom: 12px; border: 1px solid #ddd;">
+        <h3><%= link_to booking.flat.title, flat_path(booking.flat) %></h3>
+        <p><strong>Dates:</strong> <%= booking.start_date %> → <%= booking.end_date %></p>
+        <p><strong>Guests:</strong> <%= booking.guests %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>You have no bookings yet.</p>
+  <% end %>
+</div>
