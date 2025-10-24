@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:new]
+  # Only skip the login requirement for the new action
 
   def index
     # Show all bookings for the logged-in user
