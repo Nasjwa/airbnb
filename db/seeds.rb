@@ -23,7 +23,7 @@ puts "🏠 Seeding fake flats..."
     location: Faker::Address.city,
     title: Faker::Lorem.sentence(word_count: 3),
     description: Faker::Lorem.paragraph(sentence_count: 3),
-    photo: Faker::LoremFlickr.image(size: "600x400", search_terms: ['apartment', 'flat']),
+    #photo: Faker::LoremFlickr.image(size: "600x400", search_terms: ['apartment', 'flat']),
     user: user
   )
 end
