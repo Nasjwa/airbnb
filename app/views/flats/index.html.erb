@@ -1,18 +1,18 @@
 <div class="container">
-  <h1>Welcome to our airbnb app! </h1>
-  <div class="row mt-4">
-    <% @flats.each do |flat| %>
-      <div class="flat-card mb-4 p-3 border col-4">
-        <% if flat.photo.respond_to?(:attached?) && flat.photo.attached? %>
-          <%= image_tag url_for(flat.photo), alt: flat.description %>
-        <% elsif flat.photo.present? %>
-          <%= image_tag flat.photo, alt: flat.description %>
-        <% else %>
-          <p>No photo available</p>
-        <% end %>
-        <h2><strong><%= flat.title %></strong></h2>
-        <p><%= flat.description %></p>
-        <p><strong>Location:</strong> <%= flat.location %></p>
+  <h1>Welcome to our airbnb app </h1>
+  <div class="row mt-4 gx-3 gy-4">
+    <% Array(@flats).each do |flat| %>
+      <div class="col-md-4">
+        <div class="flat-card p-3 border h-100">
+          <%= link_to flat_path(flat), class: "text-decoration-none text-dark" do %>
+            <% if flat.photo.respond_to?(:attached?) ? flat.photo.attached? : flat.photo.present? %>
+              <%= image_tag(flat.photo.respond_to?(:attached?) ? url_for(flat.photo) : flat.photo, class: "img-fluid mb-3") %>
+            <% end %>
+            <h2><strong><%= flat.title %></strong></h2>
+            <p><%= flat.description %></p>
+            <p><strong>Location:</strong> <%= flat.location %></p>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
