@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Welcome to our airbnb app </h1>
   <div class="row mt-4 gx-3 gy-4">
-    <% Array(@flats).each do |flat| %>
+    <% @flats.each do |flat| %>
       <div class="col-md-4">
         <div class="flat-card p-3 border h-100">
           <%= link_to flat_path(flat), class: "text-decoration-none text-dark" do %>

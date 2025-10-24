@@ -4,6 +4,6 @@ class FlatsController < ApplicationController
   end
 
   def show
-    @flats = Flat.find(params[:id])
+    @flat = Flat.find(params[:id])
   end
 end
