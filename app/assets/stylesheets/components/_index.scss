@@ -10,8 +10,18 @@
   padding: 16px;
   margin-bottom: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 220px;
 
   &:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
+}
+
+.flat-card img {
+  width: 100%;
+  height: 40%;
+  object-fit: cover;        /* crop, preserving aspect ratio */
+  object-position: center;  /* crop from center */
+  display: block;
 }
