@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :flats, only: [:index, :show] do
+  resources :flats, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     # Nested bookings routes (for booking a flat)
     resources :bookings, only: [:new, :create]
   end
