@@ -19,4 +19,8 @@ Rails.application.routes.draw do
 
   # My bookings page
   resources :bookings, only: [:index]
+
+  # User routes outside of devise
+  resources :users, only: [:show]
+  get "users/:id/flats", to: "users#user_flats", as: :user_flats
 end
