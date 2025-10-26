@@ -1,0 +1,79 @@
+@import "config/colors";
+
+/* Base button style */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+/* === Airbnb-style primary button === */
+.btn-primary {
+  background: $abnb-primary; // Airbnb pink (#FF385C)
+  color: #fff;
+  border-color: $abnb-primary;
+
+  &:hover {
+    background: darken($abnb-primary, 5%); // slightly darker pink
+    color: #fff; // stays visible
+    border-color: darken($abnb-primary, 5%);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+/* === Secondary / neutral button === */
+.btn-secondary {
+  background: #fff;
+  color: $abnb-text;
+  border: 1px solid $abnb-border;
+
+  &:hover {
+    background: $abnb-bg; // light gray
+    color: $abnb-text; // keep text dark
+    border-color: $abnb-border;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+/* === Ghost link-style button === */
+.btn-ghost {
+  background: transparent;
+  color: $abnb-text;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: $abnb-primary;
+  }
+}
+
+/* === Danger button === */
+.btn-danger {
+  background: #E00B2B;
+  color: #fff;
+  border: 1px solid #E00B2B;
+
+  &:hover {
+    background: darken(#E00B2B, 5%);
+    border-color: darken(#E00B2B, 5%);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

@@ -1,19 +1,20 @@
-<div class="container">
+<div class="container flat-show">
   <% if @flat.photo.attached? %>
-             <%= image_tag url_for(@flat.photo), alt: @flat.title %>
-            <% else %>
-              <p>No photo</p>
-            <% end %>
-  <h2><%= @flat.title %></h2>
-  <p><%= @flat.description %></p>
-  <p><strong>Location:</strong> <%= @flat.location %></p>
+    <%= image_tag url_for(@flat.photo), alt: @flat.title, class: "flat-cover" %>
+  <% else %>
+    <p class="flat-no-photo">No photo</p>
+  <% end %>
 
-  <%= link_to "Back to flats", flats_path %>
+  <h2 class="flat-title"><%= @flat.title %></h2>
+  <p class="flat-description"><%= @flat.description %></p>
+  <p class="flat-meta"><strong>Location:</strong> <%= @flat.location %></p>
 
-  <%= link_to "Book this flat", new_flat_booking_path(@flat) %>
-
-  <%= link_to "Edit", edit_flat_path(@flat) %>
-
-  <%= link_to "Delete", flat_path(@flat), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-
+  <div class="flat-actions">
+    <%= link_to "Book this flat", new_flat_booking_path(@flat), class: "btn btn-primary" %>
+    <%= link_to "Back to flats", flats_path, class: "btn btn-secondary" %>
+    <%= link_to "Edit", edit_flat_path(@flat), class: "btn btn-ghost" %>
+    <%= link_to "Delete", flat_path(@flat),
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+          class: "btn btn-danger" %>
+  </div>
 </div>

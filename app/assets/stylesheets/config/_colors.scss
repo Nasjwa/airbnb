@@ -1,11 +1,20 @@
 // Define variables for your color scheme
 
-// For example:
+// for example
 $red: #FD1015;
 $blue: #0D6EFD;
-$yellow: #FF385c;
+$yellow: #FF385C;
 $orange: #E67E22;
 $green: #1EDD88;
 $gray: #0E0000;
 $light-gray: #F4F4F4;
-$pink: #FF385c;
+$pink: #FF385C;
+
+// Airbnb-ish palette
+$abnb-primary: #FF385C; // Rausch
+$abnb-text:    #222222;
+$abnb-muted:   #717171;
+$abnb-border:  #DDDDDD;
+$abnb-bg:      #F7F7F7;
+$abnb-input:   #EBEBEB;
+$abnb-focus:   rgba(255, 56, 92, .28);
