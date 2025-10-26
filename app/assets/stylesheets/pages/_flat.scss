@@ -1,0 +1,28 @@
+@import "config/colors";
+
+.flat-show {
+  max-width: 960px;
+  margin: 24px auto 40px;
+}
+
+.flat-cover {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+  border: 1px solid $abnb-border;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  margin-bottom: 16px;
+}
+
+.flat-no-photo { color: $abnb-muted; }
+.flat-title { margin: 8px 0 6px; color: $abnb-text; }
+.flat-description { color: $abnb-text; }
+.flat-meta { color: $abnb-muted; }
+
+.flat-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin-top: 18px;
+}
