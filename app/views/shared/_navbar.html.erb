@@ -1,19 +1,19 @@
-<nav class="navbar navbar-expand-lg bg-white shadow-sm py-2">
+<nav class="navbar sticky-top navbar-expand-lg bg-white shadow-sm py-2">
   <div class="container d-flex justify-content-between align-items-center">
 
    <!-- Logo at left -->
   <div class="d-flex align-items-center">
     <%= link_to "Airbnb", flats_path, class: "navbar-brand fw-bold text-dark" %>
-  </div> 
+  </div>
 
     <!-- Right buttons -->
     <div class="d-flex align-items-center">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <% if user_signed_in? %> 
+        <% if user_signed_in? %>
         <li class="nav-item dropdown inline-flex">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             My profile
-          </a> 
+          </a>
           <ul class="dropdown-menu">
             <li class="dropdown-item"><%= link_to "My profile", user_path(current_user) %></li>
             <li class="dropdown-item"><%= link_to "My flats", user_flats_path(current_user)  %></li>
@@ -28,7 +28,7 @@
         <li class="nav-item nav-link"><%= link_to "Sign up", new_user_registration_path %></li>
         </li>
         <% end %>
-    </div>    
+    </div>
       </ul>
     </div>
   </div>

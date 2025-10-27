@@ -12,9 +12,5 @@
   <div class="flat-actions">
     <%= link_to "Book this flat", new_flat_booking_path(@flat), class: "btn btn-primary" %>
     <%= link_to "Back to flats", flats_path, class: "btn btn-secondary" %>
-    <%= link_to "Edit", edit_flat_path(@flat), class: "btn btn-ghost" %>
-    <%= link_to "Delete", flat_path(@flat),
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-          class: "btn btn-danger" %>
   </div>
 </div>
