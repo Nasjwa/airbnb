@@ -1,9 +1,9 @@
 <div class="container">
-  <h1 class="text-center">Welcome to our airbnb app!</h1>
+  <!-- <h1 class="text-center">Welcome to our airbnb app!</h1> -->
   <div class="row mt-4 gx-3 gy-4">
     <% @flats.each do |flat| %>
       <div class="col-md-4">
-        <div class="flat-card p-3 border h-100">
+        <div class="flat-card p-3 border d-flex flex-column justify-content-between">
           <%= link_to flat_path(flat), class: "text-decoration-none text-dark" do %>
             <% if flat.photo.attached? %>
              <%= image_tag url_for(flat.photo), alt: flat.title, class: "img-fluid" %>
@@ -17,6 +17,6 @@
         </div>
       </div>
     <% end %>
-    <%= link_to "New Flat", new_flat_path %>
+    <% link_to "New Flat", new_flat_path %>
   </div>
 </div>

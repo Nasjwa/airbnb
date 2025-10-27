@@ -3,5 +3,5 @@
 
   <%= render 'form', flat: @flat %>
 
-  <%= link_to 'Back', flat_path(@flat) %>
+  <%= link_to 'Back to your flats', user_flats_path(current_user) %>
 </div>
