@@ -3,7 +3,7 @@ class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-    @flats = Flat.with_attached_photo.all
+    @flats = Flat.all
   end
 
   def show
@@ -47,6 +47,6 @@ class FlatsController < ApplicationController
 
   def flat_params
     # permit :photo — file uploads handled by Active Storage
-    params.require(:flat).permit(:title, :description, :location, :photo)
+    params.require(:flat).permit(:title, :description, :location, photos: [])
   end
 end

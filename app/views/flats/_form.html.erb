@@ -26,12 +26,14 @@
   </div>
 
   <div>
-    <label>Upload photo</label>
-    <%= f.file_field :photo, class: "flat-input" %>
+    <label>Upload photos</label>
+    <%= f.file_field :photos, multiple: true, direct_upload: true, class: "flat-input" %>
 
-    <% if flat.photo.attached? %>
+    <% if flat.photos.attached? %>
       <div class="flat-photo-preview">
-        <%= image_tag url_for(flat.photo), alt: flat.title %>
+        <% flat.photos.each do |photo| %>
+          <%= image_tag url_for(photo), alt: flat.title %>
+        <% end %>
       </div>
     <% end %>
   </div>
