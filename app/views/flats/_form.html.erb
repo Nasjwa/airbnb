@@ -1,6 +1,6 @@
-<%= form_with(model: flat, local: true) do |f| %>
+<%= form_with(model: flat, local: true, class: "flat-form") do |f| %>
   <% if flat.errors.any? %>
-    <div class="errors">
+    <div class="flat-errors">
       <h2><%= pluralize(flat.errors.count, "error") %> prevented this flat from saving:</h2>
       <ul>
         <% flat.errors.full_messages.each do |msg| %>
@@ -10,33 +10,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, class: "wide-input" %>
+  <div>
+    <label>Title</label>
+    <%= f.text_field :title, class: "flat-input", placeholder: "e.g., Cozy studio in Lisbon" %>
   </div>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, class: "wide-textarea" %>
+  <div>
+    <label>Description</label>
+    <%= f.text_area :description, class: "flat-input", placeholder: "Describe your flat…" %>
   </div>
 
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location, class: "wide-input" %>
+  <div>
+    <label>Location</label>
+    <%= f.text_field :location, class: "flat-input", placeholder: "City, neighborhood…" %>
   </div>
 
-  <div class="field mt-3">
-    <%= f.label :photo, "Upload photo" %><br>
-    <%= f.file_field :photo %>
+  <div>
+    <label>Upload photo</label>
+    <%= f.file_field :photo, class: "flat-input" %>
 
     <% if flat.photo.attached? %>
-      <div class="preview ">
+      <div class="flat-photo-preview">
         <%= image_tag url_for(flat.photo), alt: flat.title %>
       </div>
     <% end %>
   </div>
 
-  <div class="actions" style="margin-top:12px;">
-    <%= f.submit class: "btn btn-primary" %>
+  <div class="flat-actions">
+    <%= f.submit "Save flat", class: "btn btn-primary" %>
   </div>
 <% end %>
