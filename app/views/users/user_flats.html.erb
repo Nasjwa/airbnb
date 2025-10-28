@@ -1,6 +1,9 @@
 
 <div class="container">
   <h1 class="text-center">Your flats are here!</h1>
+  <div class="mt-4">
+    <%= link_to "Add a new flat", new_flat_path, class: "btn btn-primary" %>
+  </div>
   <div class="row mt-4 mb-5 gx-4 gy-5">
     <% @user_flats.each do |flat| %>
       <div class="col-md-4 mb-4 mt-15">
@@ -24,8 +27,6 @@
         </div>
       </div>
     <% end %>
-    <div class="mt-4">
-      <%= link_to "Add a new flat", new_flat_path, class: "btn btn-primary" %>
-    </div>
+
   </div>
 </div>
