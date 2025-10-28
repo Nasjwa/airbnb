@@ -1,7 +1,12 @@
-<div class="container">
-  <h1>Edit Flat</h1>
+<div class="flat-form-page">
+  <div class="flat-form-card">
+    <h1 class="flat-form-title">Edit Flat</h1>
+    <p class="flat-form-sub">Update the details below.</p>
 
-  <%= render 'form', flat: @flat %>
+    <%= render 'form', flat: @flat %>
 
-  <%= link_to 'Back to your flats', user_flats_path(current_user) %>
+    <div class="flat-actions" style="margin-top:12px;">
+      <%= link_to 'Back to your flats', user_flats_path(current_user), class: "btn btn-ghost" %>
+    </div>
+  </div>
 </div>
