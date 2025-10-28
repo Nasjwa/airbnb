@@ -24,7 +24,7 @@ flats = [
     title: "A house",
     location: "Somewhere",
     description: "A classic house from the 80s.",
-    image_url: "https://res.cloudinary.com/daadrtkvx/image/upload/v1761595690/OIP_1_ndfdls.jpg"
+    image_url: "https://res.cloudinary.com/daadrtkvx/image/upload/v1761669942/development/xo7rcjsf14kboi0lyg2s8ebvtxz7.webp",
   },
    {
     title: "A house",
@@ -48,7 +48,7 @@ flats.each do |attrs|
     description: attrs[:description],
     user: user
   )
-  flat.photo.attach(io: file, filename: "#{attrs[:title].parameterize}.jpg", content_type: "image/jpg")
+  flat.photos.attach(io: file, filename: "#{attrs[:title].parameterize}.jpg", content_type: "image/jpg")
   puts "Created #{flat.title}"
 end
 
