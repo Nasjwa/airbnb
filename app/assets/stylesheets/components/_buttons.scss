@@ -1,6 +1,19 @@
 @import "config/colors";
 
-/* Base button style */
+/* ===== Reset native button styles so browsers don't add blue halos ===== */
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+/* ===== Base button class ===== */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -10,64 +23,116 @@
   font-weight: 700;
   font-size: 15px;
   border: 1px solid transparent;
-  text-decoration: none;
   cursor: pointer;
   transition: all 0.15s ease;
-  text-decoration: none;
+  text-decoration: none; /* for <a class="btn"> links */
+  line-height: 1.1;
 }
 
-/* === Airbnb-style primary button === */
-.btn-primary {
-  background: $abnb-primary; // Airbnb pink (#FF385C)
-  color: #fff;
-  border-color: $abnb-primary;
-
-  &:hover {
-    background: darken($abnb-primary, 5%); // slightly darker pink
-    color: #fff; // stays visible
-    border-color: darken($abnb-primary, 5%);
-  }
-
-  &:active {
-    transform: translateY(1px);
-  }
+/* ===== PRIMARY (Airbnb pink) ===== */
+.btn-primary,
+button.btn-primary,
+input[type="submit"].btn-primary,
+input[type="button"].btn-primary,
+input[type="reset"].btn-primary {
+  background: $abnb-primary !important;
+  color: #fff !important;
+  border-color: $abnb-primary !important;
+  transition: filter 0.15s ease, transform 0.02s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* === Secondary / neutral button === */
+.btn-primary:hover,
+button.btn-primary:hover,
+input[type="submit"].btn-primary:hover,
+input[type="button"].btn-primary:hover,
+input[type="reset"].btn-primary:hover {
+  background: darken($abnb-primary, 5%) !important;
+  border-color: darken($abnb-primary, 5%) !important;
+  filter: brightness(1.05);
+}
+
+.btn-primary:active,
+button.btn-primary:active,
+input[type="submit"].btn-primary:active,
+input[type="button"].btn-primary:active,
+input[type="reset"].btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active,
+button.btn-primary:not(:disabled):not(.disabled):active,
+input[type="submit"].btn-primary:not(:disabled):not(.disabled):active {
+  background: darken($abnb-primary, 8%) !important;
+  border-color: darken($abnb-primary, 8%) !important;
+  transform: translateY(1px);
+}
+
+.btn-primary:focus,
+.btn-primary:focus-visible,
+button.btn-primary:focus,
+button.btn-primary:focus-visible,
+input[type="submit"].btn-primary:focus,
+input[type="submit"].btn-primary:focus-visible {
+  outline: none !important;
+  background: $abnb-primary !important;
+  border-color: $abnb-primary !important;
+  box-shadow: 0 0 0 3px $abnb-focus !important; /* soft pink halo */
+}
+
+/* ===== SECONDARY / neutral ===== */
 .btn-secondary {
   background: #fff;
   color: $abnb-text;
   border: 1px solid $abnb-border;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
-    background: $abnb-bg; // light gray
-    color: $abnb-text; // keep text dark
-    border-color: $abnb-border;
+    background: $abnb-bg;
+    color: $abnb-text;
   }
 
   &:active {
+    background: darken($abnb-bg, 3%);
     transform: translateY(1px);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px $abnb-focus;
   }
 }
 
-/* === Ghost link-style button === */
+/* ===== GHOST / link-style ===== */
 .btn-ghost {
   background: transparent;
   color: $abnb-text;
   border: none;
   text-decoration: underline;
   text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 0.2s ease;
 
   &:hover {
     color: $abnb-primary;
   }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    color: $abnb-primary;
+    box-shadow: 0 0 0 3px $abnb-focus;
+    border-radius: 6px;
+  }
 }
 
-/* === Danger button === */
+/* ===== DANGER ===== */
 .btn-danger {
   background: #E00B2B;
   color: #fff;
   border: 1px solid #E00B2B;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
     background: darken(#E00B2B, 5%);
@@ -75,6 +140,14 @@
   }
 
   &:active {
+    background: darken(#E00B2B, 10%);
+    border-color: darken(#E00B2B, 10%);
     transform: translateY(1px);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(224, 11, 43, 0.25);
   }
 }
