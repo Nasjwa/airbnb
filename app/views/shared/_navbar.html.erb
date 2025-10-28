@@ -3,14 +3,14 @@
 
    <!-- Logo at left -->
   <div class="d-flex align-items-center">
-    <%= link_to "Airbnb", flats_path, class: "navbar-brand fw-bold text-dark" %>
+    <%= link_to image_tag("logo.png", alt: "Airbnb", height: 100, width: 150), flats_path, class: "navbar-brand fw-bold text-dark" %>
   </div>
 
     <!-- Right buttons -->
     <div class="d-flex align-items-center">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
-        <li class="nav-item dropdown inline-flex">
+        <li class="nav-item dropdown inline-flex .btn-primary">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             My profile
           </a>
@@ -23,9 +23,9 @@
             </li>
           </ul>
         <% else %>
-    <div class="inline-flex">
-        <li class="nav-item nav-link"><%= link_to "Login", new_user_session_path %></li>
-        <li class="nav-item nav-link"><%= link_to "Sign up", new_user_registration_path %></li>
+    <div class="d-flex align-items-center">
+        <li class="nav-item nav-link inline-flex btn btn-primary"><%= link_to "Login", new_user_session_path %></li>
+        <li class="nav-item nav-link inline-flex .btn .btn-primary"><%= link_to "Sign up", new_user_registration_path %></li>
         </li>
         <% end %>
     </div>

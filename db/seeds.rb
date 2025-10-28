@@ -7,7 +7,6 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-require 'faker'
 require 'open-uri'
 
 puts "🧹 Clearing existing data..."
@@ -17,15 +16,40 @@ User.destroy_all
 puts "👤 Creating a fake user..."
 user = User.create!(email: "test@example.com", password: "password")
 
-puts "🏠 Seeding fake flats..."
-30.times do
-  Flat.create!(
-    location: Faker::Address.city,
-    title: Faker::Lorem.sentence(word_count: 3),
-    description: Faker::Lorem.paragraph(sentence_count: 3),
-    #photo: Faker::LoremFlickr.image(size: "600x400", search_terms: ['apartment', 'flat']),
+
+puts "Creating flats..."
+
+flats = [
+  {
+    title: "A house",
+    location: "Somewhere",
+    description: "A classic house from the 80s.",
+    image_url: "https://res.cloudinary.com/daadrtkvx/image/upload/v1761595690/OIP_1_ndfdls.jpg"
+  },
+   {
+    title: "A house",
+    location: "Somewhere",
+    description: "A classic house from the 80s.",
+    image_url: "https://res.cloudinary.com/daadrtkvx/image/upload/v1761593258/development/ic2b8lgwd65w5qd59q6h7ipyu0nv.webp"
+  },
+   {
+    title: "A house",
+    location: "Somewhere",
+    description: "A classic house from the 80s.",
+    image_url: "https://res.cloudinary.com/daadrtkvx/image/upload/v1761593845/development/o5nwuq37sc0sqpby2nqbllx42d5q.png"
+  },
+]
+
+flats.each do |attrs|
+  file = URI.open(attrs[:image_url])
+  flat = Flat.create!(
+    title: attrs[:title],
+    location: attrs[:location],
+    description: attrs[:description],
     user: user
   )
+  flat.photo.attach(io: file, filename: "#{attrs[:title].parameterize}.jpg", content_type: "image/jpg")
+  puts "Created #{flat.title}"
 end
 
-puts "✅ Done! Created #{Flat.count} fake flats for user #{user.email}."
+puts "✅ Done seeding!"
