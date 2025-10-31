@@ -12,7 +12,6 @@
           <%= link_to flat_path(flat), class: "text-decoration-none text-dark" do %>
 
             <% if flat.photos.attached? %>
-              <%# ✅ Only show the first image once %>
               <% if defined?(Cloudinary) %>
                 <%= cl_image_tag flat.photos.first.key,
                     width: 800,
