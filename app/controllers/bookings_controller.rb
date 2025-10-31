@@ -1,20 +1,20 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!, except: [:new]
-  # Only skip the login requirement for the new action
 
   def index
-    # Show all bookings for the logged-in user
-    @bookings = current_user.bookings.includes(:flat)
+    # Show all bookings for the logged-in user (newest first)
+    # Preload flats and their attached photos for performance
+    @bookings = current_user.bookings
+                            .includes(flat: { photos_attachments: :blob })
+                            .order(start_date: :desc)
   end
 
   def new
-    # Show booking form for one flat
     @flat = Flat.find(params[:flat_id])
     @booking = Booking.new
   end
 
   def create
-    # Create the booking linked to the flat and user
     @flat = Flat.find(params[:flat_id])
     @booking = current_user.bookings.build(booking_params.merge(flat: @flat))
 
