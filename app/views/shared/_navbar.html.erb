@@ -1,51 +1,38 @@
-<nav class="navbar sticky-top navbar-expand-lg bg-white shadow-sm py-2">
-  <div class="container d-flex justify-content-between align-items-center">
+<nav class="abnb-navbar" role="navigation" aria-label="Main">
+  <div class="abnb-container">
+    <!-- Brand -->
+    <%= link_to flats_path, class: "brand" do %>
+      <%= image_tag "logo.png", alt: "Logo", class: "brand-logo" %>
+      <span class="wordmark">AirHome</span>
+    <% end %>
 
-   <!-- Logo at left -->
-  <div class="d-flex align-items-center">
-    <%= link_to image_tag("logo.png", alt: "Airbnb", height: 100, width: 150), flats_path, class: "navbar-brand fw-bold text-dark" %>
-  </div>
+    <!-- Search (center) -->
+    <%= form_with url: flats_path, method: :get, local: true, html: { class: "nav-search", role: "search" } do %>
+      <%= text_field_tag :query, params[:query],
+            placeholder: "Search stays, destinations…",
+            class: "search-input",
+            aria: { label: "Search" } %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
 
-  <!-- Search form -->
-  <div class="row justify-content-center">
-    <div class="col-sm-10 my-3">
-      <%= form_with url: flats_path, method: :get, class: "d-flex align-items-center" do %>
-        <%= text_field_tag :query,
-              params[:query],
-              class: "form-control me-2",
-              placeholder: "Type a keyword",
-              style: "width: 500px;"
-          %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-  </div>
-
-
-    <!-- Right buttons -->
-    <div class="d-flex align-items-center">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <% if user_signed_in? %>
-        <li class="nav-item dropdown inline-flex .btn-primary">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            My profile
-          </a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-item"><%= link_to "My profile", user_path(current_user) %></li>
-            <li class="dropdown-item"><%= link_to "My flats", user_flats_path(current_user)  %></li>
-            <li class="dropdown-item"><%= link_to "My bookings", bookings_path %></li>
-            <li><hr class="dropdown-divider"></li>
-            <li class="dropdown-item"><%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
-            </li>
+    <!-- Right actions (no Bootstrap) -->
+    <div class="nav-actions">
+      <% if user_signed_in? %>
+        <!-- Native <details> for dropdown: no JS, no Bootstrap -->
+        <details class="menu">
+          <summary class="btn btn-secondary">My profile</summary>
+          <ul class="menu-list" role="menu" aria-label="User menu">
+            <li><%= link_to "My profile", user_path(current_user), class: "menu-item", role: "menuitem" %></li>
+            <li><%= link_to "My flats", user_flats_path(current_user), class: "menu-item", role: "menuitem" %></li>
+            <li><%= link_to "My bookings", bookings_path, class: "menu-item", role: "menuitem" %></li>
+            <li class="divider" aria-hidden="true"></li>
+            <li><%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "menu-item", role: "menuitem" %></li>
           </ul>
-        <% else %>
-    <div class="d-flex align-items-center">
-        <li class="nav-item nav-link inline-flex btn btn-primary"><%= link_to "Login", new_user_session_path %></li>
-        <li class="nav-item nav-link inline-flex .btn .btn-primary"><%= link_to "Sign up", new_user_registration_path %></li>
-        </li>
-        <% end %>
-    </div>
-      </ul>
+        </details>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "btn btn-secondary" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </nav>

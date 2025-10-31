@@ -1,13 +1,154 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-
+/* ===== NAVBAR (no Bootstrap) ===== */
+.abnb-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 10px 0;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+/* shared page container (also used by content) */
+.abnb-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr minmax(340px, 520px) 1fr; /* brand | search | actions */
+  align-items: center;
+  gap: 12px;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+/* ===== Brand ===== */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+
+  .brand-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .wordmark {
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.2px;
+    color: $abnb-primary;
+  }
+}
+
+/* ===== Search pill ===== */
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid $abnb-border;
+  border-radius: 999px;
+  width: 100%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: box-shadow .2s ease;
+
+  &:focus-within {
+    box-shadow: 0 0 0 3px $abnb-focus;
+  }
+
+  .search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    padding: 10px 12px;
+
+    &:focus { outline: none; }
+    &::placeholder { color: #9aa0a6; }
+  }
+
+  .btn.btn-primary {
+    border-radius: 999px;
+    padding: 10px 16px;
+  }
+}
+
+/* ===== Right actions ===== */
+.nav-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ===== Dropdown menu with <details> ===== */
+.menu {
+  position: relative;
+  display: inline-block;
+
+  summary {
+    list-style: none; /* remove default triangle */
+    cursor: pointer;
+    /* the button styles come from .btn.btn-secondary in your buttons.scss */
+  }
+  summary::-webkit-details-marker { display: none; }
+
+  /* menu panel */
+  .menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    min-width: 200px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid $abnb-border;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    display: none;
+  }
+
+  &[open] .menu-list { display: block; }
+
+  .menu-item {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    transition: background .15s ease;
+
+    &:hover { background: $abnb-bg; }
+    &:focus { outline: none; box-shadow: 0 0 0 3px $abnb-focus; }
+  }
+
+  .divider {
+    height: 1px;
+    background: $abnb-border;
+    margin: 6px 0;
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .abnb-container {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand actions"
+      "search search";
+    row-gap: 8px;
+  }
+  .brand       { grid-area: brand; }
+  .nav-actions { grid-area: actions; }
+  .nav-search  { grid-area: search; }
+}
+
+@media (max-width: 560px) {
+  .wordmark { display: none; } /* keep only the icon on tiny screens */
+  .nav-search .btn.btn-primary { padding: 8px 12px; }
 }
