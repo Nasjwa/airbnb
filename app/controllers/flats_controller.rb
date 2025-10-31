@@ -4,6 +4,14 @@ class FlatsController < ApplicationController
 
   def index
     @flats = Flat.all
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        flats.title @@ :query
+        OR flats.description @@ :query
+        OR flats.location @@ :query
+      SQL
+      @flats = @flats.joins(:user).where(sql_subquery, query: params[:query])
+    end
   end
 
   def show
