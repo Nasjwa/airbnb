@@ -10,11 +10,8 @@
         <div class="flat-card p-3 border d-flex flex-column justify-content-between">
           <%= link_to flat_path(flat), class: "text-decoration-none text-dark" do %>
             <% if flat.photos.attached? %>
-<<<<<<< HEAD
             <%= image_tag url_for(flat.photos.first), alt: flat.title, class: "img-fluid" %>
-=======
               <%= image_tag url_for(flat.photos.first), alt: flat.title, class: "img-fluid" %>
->>>>>>> 7c77e13b953a4c26faeb13baee40b3810d27537f
             <% else %>
               <p>No photo</p>
             <% end %>
