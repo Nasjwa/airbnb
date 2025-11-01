@@ -4,6 +4,14 @@ class FlatsController < ApplicationController
 
   def index
     @flats = Flat.all
+    @markers = @flats.geocoded.map do |flat|
+        {
+          lng: flat.longitude,
+          lat: flat.latitude,
+          info_window_html: render_to_string(partial: "info_window", locals: { flat: flat }),
+          marker_html: render_to_string(partial: "marker")
+        }# only flats with coordinates
+    end
     if params[:query].present?
       sql_subquery = <<~SQL
         flats.title @@ :query
