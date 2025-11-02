@@ -40,7 +40,7 @@
 
         <div class="mt-2 d-flex gap-2">
           <%= link_to "Edit", edit_flat_path(flat), class: "btn btn-primary" %>
-          <%= link_to "Delete", flat_path(flat),
+          <%= link_to "Delete", user_flats_path(flat),
                 data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
                 class: "btn btn-danger" %>
         </div>
