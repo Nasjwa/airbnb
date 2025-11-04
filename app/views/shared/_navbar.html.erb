@@ -22,7 +22,6 @@
         <details class="menu">
           <summary class="btn btn-secondary">My profile</summary>
           <ul class="menu-list" role="menu" aria-label="User menu">
-            <li><%= link_to "My profile", user_path(current_user), class: "menu-item", role: "menuitem" %></li>
             <li><%= link_to "My flats", user_flats_path(current_user), class: "menu-item", role: "menuitem" %></li>
             <li><%= link_to "My bookings", bookings_path, class: "menu-item", role: "menuitem" %></li>
             <li class="divider" aria-hidden="true"></li>
